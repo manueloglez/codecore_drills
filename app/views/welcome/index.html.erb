@@ -1,0 +1,16 @@
+<h1 class="text-center">Welcome to CodeCore Drillz</h1>
+<div class="container text-center">
+    <%= image_tag 'settings-icon.png', class: "home-image" %>
+    <%= image_tag 'navigation-icon.png', class: "home-image" %>
+    <%= image_tag 'check.png', class: "home-image" %>
+</div>
+<hr>
+<% if !user_signed_in? %>
+<div class="container text-center">
+<button type="button" class="btn btn-outline-secondary align-center">
+    <%= link_to 'Enter', new_session_path %>
+</button>
+</div>
+<% end %>
+
+
