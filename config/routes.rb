@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get("/", { to: "welcome#index", as: "root" })
 
   # for user and session resource
-  resources :users, only: [:new, :create]
+  resources :users
 
   resource :session, only: [:new, :create, :destroy]
 
