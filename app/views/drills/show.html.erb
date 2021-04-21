@@ -1,0 +1,6 @@
+<p> <%= @drill.description %> </p>
+<ul>
+  <% @drill.answers.each do |answer| %>
+    <li><%= answer.description %></li>
+  <% end %>
+</ul>
