@@ -1,4 +1,7 @@
 class Drillgroup < ApplicationRecord
+  has_many :drills, dependent: :destroy
+  has_many :users, through: :points
+  has_many :points, dependent: :destroy
   validates(
     :title,
     presence: true,
@@ -22,10 +25,4 @@ class Drillgroup < ApplicationRecord
     },
   )
   
-  validates(
-    :level,
-    presence: {
-      message: "must select a level"
-    },
-  )
 end
