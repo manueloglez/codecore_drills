@@ -8,12 +8,10 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "jquery"
+import "bootstrap"
+// import "./selectize"
+window.jQuery=$;
+window.$=$;
+
 Rails.start()
 ActiveStorage.start()
-
-$(document).ready(function(){
-  $("#addAnswer").click(function(){
-    $("#answers").append($("#answer").html());
-  });
-});
