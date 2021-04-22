@@ -1,0 +1,26 @@
+
+
+<h2> <%= @user.full_name %> Profile Page</h2>
+
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+  
+    <tr>
+      <td><%= @user.id %></td>
+      <td><%= @user.first_name %></td>
+      <td><%= @user.last_name %></td>
+      <td><%= @user.email %></td>
+    </tr>
+  
+</table>
+
+
+
+<%= link_to "Edit Your Profile", edit_user_path(@user), class: 'btn btn-info'%>
