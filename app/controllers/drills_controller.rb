@@ -5,9 +5,13 @@ class DrillsController < ApplicationController
     @drill.answers.build
   end
   def create 
+    #render json: params
     @drill = Drill.new(drill_params)
+    @drill.drillgroup = Drillgroup.find(
+      params.require(:drill)[:drillgroup_id]
+    )
     if @drill.save
-      redirect_to drill_path(@drill.id)
+      redirect_to drillgroup_path(@drill.drillgroup)
     else
       render :new
     end
@@ -25,7 +29,7 @@ class DrillsController < ApplicationController
   end
   def destroy
     @drill.destroy
-    redirect_to drills_path
+    redirect_to drillgroup_path(@drill.drillgroup)
   end
 
   def add_answer
