@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 PASSWORD = "123"
+Point.delete_all
 Answer.delete_all
 Drill.delete_all
 Drillgroup.delete_all
-Point.delete_all
 User.delete_all
 
 super_user = User.create(
@@ -36,7 +36,8 @@ levels = ["Beginner", "Intermediate", "Advanced"]
   group = Drillgroup.create(
     title: Faker::Superhero.name,
     description: Faker::Lorem.paragraph_by_chars(number: rand(30..70)),
-    level: levels.sample
+    level: levels.sample,
+    value: rand(0..20) * 100,
   )
 
   if group.valid?
@@ -54,7 +55,6 @@ levels = ["Beginner", "Intermediate", "Advanced"]
     group.points = users.shuffle.slice(0, rand(users.count)).each.map do |user|
       Point.new(
         user: user,
-        value: rand(0..20) * 100,
         score: rand(0..100),
         taken: rand(0..5),
       )

@@ -2,19 +2,10 @@ class DrillgroupsController < ApplicationController
   def new
     @drillgroup = Drillgroup.new
   end
-
-  def create
-  def end
-
-  def show
-  end
-
+  
   def index
+    @drillgroups = Drillgroup.all
+    @points = current_user.points
   end
 
-  def show
-  end
-
-  def index
-  end
 end

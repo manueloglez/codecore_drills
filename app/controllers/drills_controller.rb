@@ -2,9 +2,7 @@ class DrillsController < ApplicationController
   before_action :find_drill, only: [:show, :edit, :update, :destroy, :add_answer]
   def new
     @drill = Drill.new
-    3.times do
-      @drill.answers.build
-    end
+    @drill.answers.build
   end
   def create 
     @drill = Drill.new(drill_params)
