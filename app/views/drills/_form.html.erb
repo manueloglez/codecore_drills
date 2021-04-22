@@ -4,10 +4,13 @@
     <%= form.text_area :description %>
   </div>
 
-  <%= form.fields_for :answers do |answer|%>
-    <%= answer.label :description %>
-    <%= answer.text_field :description %>
-  <% end %>
-
+  <div id="answers">
+    <div id="answer">
+      <%= form.fields_for :answers do |answer|%>
+        <%= answer.label :description %>
+        <%= answer.text_field :description %>
+      <% end %>
+    </div>
+  </div>
   <%= form.submit %>
 <% end %>
