@@ -3,18 +3,18 @@ class DrillgroupsController < ApplicationController
     @drillgroup = Drillgroup.new
   end
 
-  def create
-  def end
+  # def create
+  # def end
 
-  def show
-  end
+  # def show
+  # end
 
-  def index
-  end
+  # def index
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def index
-  end
+  # def index
+  # end
 end

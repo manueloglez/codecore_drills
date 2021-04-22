@@ -1,0 +1,30 @@
+<%= form_with model: @drillgroup, local: true do |form| %>
+  <% if @drillgroup.errors.present? %>
+    <p>
+      <%= @drillgroup.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :level %>
+
+    <% ['Beginner', 'Intermediate', 'Advanced'].each do |level| %>
+      <br><%= radio_button_tag 'level', level, @theme == level %>
+      <%= level.humanize %>
+    <% end %>
+
+  </div>
+  <div>
+    <%= form.label :points %>
+    <%= form.text_field :points %>
+  </div>
+
+    <%= form.submit("Save", class: 'btn btn-primary') %>
+<% end %>
