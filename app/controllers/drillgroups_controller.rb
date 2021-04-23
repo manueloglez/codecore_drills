@@ -11,6 +11,16 @@ class DrillgroupsController < ApplicationController
   
   def index
     @drillgroups = Drillgroup.all
+  end
+
+  def destroy
+    drillgroup = Drillgroup.find params[:id]
+    drillgroup.destroy
+    redirect_to drillgroups_path
+  end
+
+  def mydrills
+    @drillgroups = Drillgroup.all
     @points = current_user.points
   end
 end

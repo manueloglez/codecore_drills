@@ -32,6 +32,10 @@ class UsersController < ApplicationController
           render 'edit'
         end
       end
+      def leaderboard
+        @users = User.all.sort {|a,b| b.total_points <=> a.total_points}
+        @users.slice!(5, @users.count)
+      end
     
       private
 

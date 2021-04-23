@@ -16,7 +16,7 @@ class User < ApplicationRecord
   def total_points
     total = 0
     points.each do |point|
-      total = total + point.drillgroup.value if point.score > 50
+      total = total + point.drillgroup.value if point.score && point.score > 50
     end
     total
   end
