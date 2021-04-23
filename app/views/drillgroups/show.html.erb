@@ -41,11 +41,16 @@
     <div id="answers">
       <div id="answer">
         <%= form.fields_for :answers do |answer|%>
-          <%= answer.label(:description, "Answer", class: 'form-label') %>
-          <%= answer.text_field :description, class: 'form-control' %>
+        <div id="fieldsetContainer">
+          <fieldset id="0">
+            <%= answer.label(:description, "Answer", class: 'form-label') %>
+            <%= answer.text_field :description, class: 'form-control' %>
+          </fieldset>
+        </div>
         <% end %>
       </div>
     </div>
     <%= form.submit "Save Drill", class: "btn btn-primary mt-3 float-right" %>
-  <% end %>
+    <% end %>
+    <button id=addAnswer class="btn btn-primary w-25">Add another answer</button>
 </div>
