@@ -1,0 +1,61 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="alldrills-tab" data-toggle="tab" href="#alldrills" role="tab" aria-controls="alldrills" aria-selected="true">All Drills</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="mydrills-tab" data-toggle="tab" href="#mydrills" role="tab" aria-controls="mydrills" aria-selected="false">My Drills</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="alldrills" role="tabpanel" aria-labelledby="alldrills-tab">
+    <div id="all-drills" class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <% @drillgroups.each do |drillgroup| %>
+      <div class="col">
+        <div class="card p-3 m-2" style="height: 13rem;">
+          <div class="card-title">
+            <%= drillgroup.title %> 
+          </div>
+          <div class="card-body d-flex align-items-end">
+          <% if drillgroup.users.include?(current_user) %> 
+            <button class="btn btn-secondary w-100 mb-0" disabled>Already added</button>
+          <% else %> 
+          <%= link_to(
+            'Add to My drills', 
+            drillgroup_points_path(drillgroup),
+            class: 'btn btn-primary w-100 mb-0',
+            method: :post
+          )%>
+          <% end %> 
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div></div>
+  <div class="tab-pane fade" id="mydrills" role="tabpanel" aria-labelledby="mydrills-tab">
+    <div id="my-drills" class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <% @points.each do |point| %>
+      <div class="col">
+        <div class="card p-3 m-2" style="height: 13rem;">
+          <div class="card-title">
+            <%= point.drillgroup.title %> 
+          </div>
+          <div class="card-body">
+          <p>Taken: <%= point.taken %> </p>
+          <p>Score: <%= point.score if point.score%> </p>
+          <div class="d-flex justify-content-between">
+    
+          <%= link_to 'Start', drillgroup_path(point.drillgroup), class: 'btn btn-primary' %>
+          <%= link_to(
+            'Remove', 
+            drillgroup_point_path(point.drillgroup, point),
+            method: :delete,
+            class: 'btn btn-danger'
+          )%>
+          </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

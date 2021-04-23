@@ -13,4 +13,9 @@ class DrillgroupsController < ApplicationController
     @drillgroups = Drillgroup.all
     @points = current_user.points
   end
+
+  def mydrills
+    @drillgroups = Drillgroup.all
+    @points = current_user.points
+  end
 end

@@ -7,12 +7,12 @@ class PointsController < ApplicationController
     else
       flash[:danger] = "Drillgroup already added"
     end
-    redirect_to drillgroups_path
+    redirect_to mydrills_path
   end
   def destroy
     point = Point.find params[:id]
     point.destroy
     flash[:secondary] = "Drillgroup removed"
-    redirect_to drillgroups_path
+    redirect_to mydrills_path
   end
 end
