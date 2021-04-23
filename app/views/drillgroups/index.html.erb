@@ -1,0 +1,10 @@
+<% @points.each do |point| %>
+  <%= link_to point.drillgroup.title, drillgroup_path(point.drillgroup) %>
+  <p><%=  %></p>
+  <%= link_to(
+    'Remove', 
+    drillgroup_point_path(point.drillgroup, point),
+    method: :delete
+  ) 
+  %>
+<% end %>

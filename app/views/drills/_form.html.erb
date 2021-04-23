@@ -1,4 +1,9 @@
 <%= form_for(@drill) do |form| %>
+<% if @drill.errors.present? %>
+    <p>
+      <%= @drill.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
   <div>
     <%= form.label :description %>
     <%= form.text_area :description %>

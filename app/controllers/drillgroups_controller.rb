@@ -3,18 +3,14 @@ class DrillgroupsController < ApplicationController
     @drillgroup = Drillgroup.new
   end
 
-  def create
-  def end
-
-  def show
+  def show 
+    @drillgroup = Drillgroup.find params[:id]
+    @drill = Drill.new
+    @drill.answers.build
   end
-
+  
   def index
-  end
-
-  def show
-  end
-
-  def index
+    @drillgroups = Drillgroup.all
+    @points = current_user.points
   end
 end

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :destroy], shallow: true
   end
 
+  resources :drillgroups do
+    resources :points, only: [:create, :destroy]
+  end
 
   get("/", { to: "welcome#index", as: "root" })
 
