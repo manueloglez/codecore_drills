@@ -1,0 +1,35 @@
+<%= form_with model: @drillgroup, local: true do |form| %>
+  <% if @drillgroup.errors.present? %>
+    <p>
+      <%= @drillgroup.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+
+    <%= form.label :level %>
+
+    <%= form.radio_button(:level, "beginner") %>
+    <%= form.label(:level, "Beginner") %>
+
+    <%= form.radio_button(:level, "intermediate") %>
+    <%= form.label(:level, "Intermediate") %>
+
+    <%= form.radio_button(:level, "advanced") %>
+    <%= form.label(:level, "Advanced") %>
+
+  </div>
+  <div>
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+    <%= form.submit("Save", class: 'btn btn-primary') %>
+<% end %>

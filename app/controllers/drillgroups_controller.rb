@@ -3,7 +3,19 @@ class DrillgroupsController < ApplicationController
     @drillgroup = Drillgroup.new
   end
 
-  def show 
+  def create
+    @drillgroup = Drillgroup.new drillgroup_params
+
+    if @drillgroup.save
+      flash[:primary] = "#{@drillgroup.title} created"
+      redirect_to drillgroup_path(@drillgroup.id)
+    else
+      render :new
+    end
+    # p params
+  end
+
+  def show
     @drillgroup = Drillgroup.find params[:id]
     @drill = Drill.new
     @drill.answers.build
@@ -22,5 +34,9 @@ class DrillgroupsController < ApplicationController
   def mydrills
     @drillgroups = Drillgroup.all
     @points = current_user.points
+  end
+
+  def drillgroup_params
+    params.require(:drillgroup).permit(:title, :description, :level, :value)
   end
 end
