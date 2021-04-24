@@ -17,7 +17,9 @@ super_user = User.create(
   first_name: "Anson",
   last_name: "Lam",
   email: "anson@lam.com",
-  password: PASSWORD
+  password: PASSWORD,
+  is_admin: true,
+  is_active: true
 )
 
 8.times do
@@ -26,6 +28,8 @@ super_user = User.create(
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: PASSWORD,
+    is_admin: false,
+    is_active: true
   )
 end
 
@@ -62,3 +66,5 @@ levels = ["Beginner", "Intermediate", "Advanced"]
   end
 end
 
+puts Cowsay.say("Sign in with #{super_user.email} and password: #{PASSWORD}", :cow)
+puts Cowsay.say("Generated #{User.count} users", :ghostbusters)

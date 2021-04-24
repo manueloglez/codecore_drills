@@ -21,6 +21,14 @@ class User < ApplicationRecord
     total
   end
 
+  def activate_account!   
+    update_attribute :is_active, true 
+  end
+  
+  def deactivate_account!   
+    update_attribute :is_active, false 
+  end
+
   def full_name
     "#{first_name} #{last_name}".strip
   end
