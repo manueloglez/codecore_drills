@@ -1,9 +1,5 @@
 <%= form_with model: @drillgroup, local: true do |form| %>
-  <% if @drillgroup.errors.present? %>
-    <p>
-      <%= @drillgroup.errors.full_messages.join(", ") %>
-    </p>
-  <% end %>
+
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>

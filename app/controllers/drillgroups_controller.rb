@@ -1,4 +1,5 @@
 class DrillgroupsController < ApplicationController
+  before_action :find_drillgroup, only: [:show, :edit, :update, :destroy, :add_answer]
   def new
     @drillgroup = Drillgroup.new
   end
@@ -25,6 +26,18 @@ class DrillgroupsController < ApplicationController
     @drillgroups = Drillgroup.all
   end
 
+  def edit
+  end
+
+  def update
+    if @drillgroup.update drillgroup_params
+      flash[:dark] = "#{@drillgroup.title} updated"
+      redirect_to drillgroup_path(@drillgroup)
+    else
+      render :edit 
+    end
+  end
+
   def destroy
     drillgroup = Drillgroup.find params[:id]
     drillgroup.destroy
@@ -34,6 +47,10 @@ class DrillgroupsController < ApplicationController
   def mydrills
     @drillgroups = Drillgroup.all
     @points = current_user.points
+  end
+
+  def find_drillgroup
+    @drillgroup = Drillgroup.find params[:id]
   end
 
   def drillgroup_params
