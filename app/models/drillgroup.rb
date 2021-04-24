@@ -1,31 +1,29 @@
 class Drillgroup < ApplicationRecord
-  validates(
-    :title,
-    presence: true,
-    uniqueness: true
-  )
+  has_many :drills, dependent: :destroy
+  has_many :points, dependent: :destroy
+  has_many :users, through: :points
+  # validates :value, numericality: { greater_than_or_equal_to: 0 }
 
-  validates(
-    :description,
-    presence: {
-      message: "must include a question"
-    },
-    length: {
-      minimum: 10
-    },
-  )
+  # validates(
+  #   :title,
+  #   presence: true,
+  # )
 
-  validates(
-    :level,
-    presence: {
-      message: "must select a level"
-    },
-  )
+  # validates(
+  #   :description,
+  #   presence: {
+  #     message: "must include a description"
+  #   },
+  #   length: {
+  #     minimum: 10
+  #   },
+  # )
+
+  # validates(
+  #   :value,
+  #   presence: {
+  #     message: "must select a level"
+  #   },
+  # )
   
-  validates(
-    :level,
-    presence: {
-      message: "must select a level"
-    },
-  )
 end

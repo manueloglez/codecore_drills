@@ -1,0 +1,21 @@
+<%= form_for(@drill) do |form| %>
+<% if @drill.errors.present? %>
+    <p>
+      <%= @drill.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
+  <div>
+    <%= form.label(:description, "Drill description", class: 'form-label') %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div id="answers">
+    <div id="answer">
+      <%= form.fields_for :answers do |answer|%>
+        <%= answer.label(:description, "Answer", class: 'form-label') %>
+        <%= answer.text_field :description, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+  <%= form.submit %>
+<% end %>

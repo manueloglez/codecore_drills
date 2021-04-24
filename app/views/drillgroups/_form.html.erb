@@ -5,25 +5,30 @@
     </p>
   <% end %>
   <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
   <div>
     <%= form.label :description %>
     <%= form.text_field :description %>
   </div>
   <div>
+
     <%= form.label :level %>
 
-    <% ['Beginner', 'Intermediate', 'Advanced'].each do |level| %>
-      <br><%= radio_button_tag 'level', level, @theme == level %>
-      <%= level.humanize %>
-    <% end %>
+    <%= form.radio_button(:level, "beginner") %>
+    <%= form.label(:level, "Beginner") %>
+
+    <%= form.radio_button(:level, "intermediate") %>
+    <%= form.label(:level, "Intermediate") %>
+
+    <%= form.radio_button(:level, "advanced") %>
+    <%= form.label(:level, "Advanced") %>
 
   </div>
   <div>
-    <%= form.label :points %>
-    <%= form.text_field :points %>
+    <%= form.label :value %>
+    <%= form.text_field :value %>
   </div>
 
     <%= form.submit("Save", class: 'btn btn-primary') %>
