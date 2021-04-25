@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   put('deactivate/:id(.:format)', {to:'users#deactivate', as: 'deactivate_user'})
   put('activate/:id(.:format)', {to:'users#activate', as: 'activate_user'})
 
+  post('password/forgot', to: 'password#forgot')
+  post('password/reset', to: 'password#reset')
+
   resources :drills do 
     resources :answers, only: [:create, :destroy], shallow: true
   end
