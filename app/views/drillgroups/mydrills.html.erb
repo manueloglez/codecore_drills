@@ -44,7 +44,7 @@
           <p>Score: <%= point.score if point.score%> </p>
           <div class="d-flex justify-content-between">
     
-          <%= link_to 'Start', drillgroup_path(point.drillgroup), class: 'btn btn-primary' %>
+          <%= link_to 'Start', drill_path(point.drillgroup.drills.first), class: 'btn btn-primary' %>
           <%= link_to(
             'Remove', 
             drillgroup_point_path(point.drillgroup, point),
