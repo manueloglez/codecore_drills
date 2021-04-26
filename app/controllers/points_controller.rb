@@ -15,4 +15,9 @@ class PointsController < ApplicationController
     flash[:secondary] = "Drillgroup removed"
     redirect_to mydrills_path
   end
+  def update
+    @point = Point.find params[:id]
+    @point.update( taken: @point.taken + 1, score: params[:score] )
+  end
+
 end

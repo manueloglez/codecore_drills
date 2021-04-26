@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :drillgroups do
-    resources :points, only: [:create, :destroy]
+    resources :points, only: [:create, :destroy, :update]
   end
 
   get("/", { to: "welcome#index", as: "root" })
