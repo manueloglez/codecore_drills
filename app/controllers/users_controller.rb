@@ -16,8 +16,9 @@ class UsersController < ApplicationController
       def create
         @user = User.new user_params
         if @user.save
-          session[:user_id] = @user.id
-          redirect_to @user
+          # session[:user_id] = @user.id
+          flash[:warning] = "Thank you for registering! You will be notified when your account is approved."
+          redirect_to root_path
         else
           render :new
         end
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if current_user.is_admin?
           user.activate_account!
-          redirect_to users_path 
+          redirect_to admin_dashboard_index_path 
         else
           redirect_to :back
         end
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if current_user.is_admin?
           user.deactivate_account!
-          redirect_to users_path 
+          redirect_to admin_dashboard_index_path 
         else
           redirect_to :back
         end
