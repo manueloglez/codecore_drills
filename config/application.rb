@@ -23,6 +23,10 @@ module CodecoreDrills
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
+
+
 
     # Configuration for the application, engines, and railties goes here.
     #
