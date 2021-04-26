@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :edit, :update, :show]
+  before_action :correct_user, only: [:edit, :update, :show]
   
   
   def show

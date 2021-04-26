@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get('/mydrills', {to: 'drillgroups#mydrills', as: 'mydrills'})
@@ -6,8 +8,8 @@ Rails.application.routes.draw do
   put('deactivate/:id(.:format)', {to:'users#deactivate', as: 'deactivate_user'})
   put('activate/:id(.:format)', {to:'users#activate', as: 'activate_user'})
 
-  post('password/forgot', to: 'password#forgot')
-  post('password/reset', to: 'password#reset')
+  # post('password/forgot', to: 'password#forgot')
+  # post('password/reset', to: 'password#reset')
 
   resources :drills do 
     resources :answers, only: [:create, :destroy], shallow: true
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
 
   
   resource :session
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 
   
