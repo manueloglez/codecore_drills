@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if current_user.is_admin?
           user.activate_account!
-          redirect_to users_path 
+          redirect_to admin_dashboard_index_path 
         else
           redirect_to :back
         end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if current_user.is_admin?
           user.deactivate_account!
-          redirect_to users_path 
+          redirect_to admin_dashboard_index_path 
         else
           redirect_to :back
         end

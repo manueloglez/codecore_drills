@@ -7,9 +7,7 @@
 <hr>
 <% if !user_signed_in? %>
 <div class="container text-center">
-<button type="button" class="btn btn-outline-secondary align-center">
-    <%= link_to 'Enter', new_session_path %>
-</button>
+<%= link_to 'Enter', new_session_path, class: "btn btn-outline-secondary align-center" %>
 </div>
 <% end %>
 

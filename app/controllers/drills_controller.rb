@@ -40,7 +40,7 @@ class DrillsController < ApplicationController
   end
   def update
     if @drill.update drill_params
-      redirect_to drill_path(@drill)
+      redirect_to drillgroup_path(@drill.drillgroup)
     else
       render :edit
     end
