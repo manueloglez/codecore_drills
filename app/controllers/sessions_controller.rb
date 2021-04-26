@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         if @user && @user.is_active && @user.authenticate(params[:password])
           session[:user_id] = @user.id
           flash[:primary] = "Welcome, #{@user.full_name}"
-          redirect_to @user
+          redirect_to root_path
         elsif !(@user && @user.is_active)
           flash[:danger] = "Your account is not activated"
           redirect_to root_path
