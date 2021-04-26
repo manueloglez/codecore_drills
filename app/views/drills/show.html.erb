@@ -13,15 +13,31 @@
     </div>
       <%= form.submit "Submit", class: "btn btn-primary mt-3" %>
     <% else %>
-      <%= params[:answer] %>
-    <% end %>
+    <h4 class="mt-4">Your Answer: </h4>
+      <div class="card m-2">
+        <div class="card-body">
+          <%= params[:answer] %>
+        </div>
+      </div>
+      <% end %>
   <% end %>
   <% if params[:answer] %>
-    <% if @answer_correct %> <h4><%= 'Correct!' %></h4>
-    <% else %> <h4><%= 'Wrong!' %></h4>
+    <% if @answer_correct %>
+    <div class="alert alert-success" role="alert">
+      Correct!!
+    </div>
+    <% else %> 
+    <div class="alert alert-danger" role="alert">
+      Wrong!
+    </div>
     <% end %>
+    <h4 class="mt-4">Correct Answers: </h4>
     <% @correct_answers.each do |a| %>
-      <h5><%= a %></h5>
+      <div class="card m-2">
+        <div class="card-body">
+          <p><%= a %></p>
+        </div>
+      </div>
     <% end %>
     <% if @answers_count + 1 < @drill_list.count %>
       <%= form_with(url: drill_path(@next_drill), method: :get) do |form| %>
@@ -33,7 +49,6 @@
       <%= form_with(url: drillgroup_point_path(@drillgroup, @point), method: :patch) do |form| %>
         <%= form.hidden_field :answers_count, value: @answers_count + 1 %>
         <%= form.hidden_field :correct_answers, value: @score %>
-        <%= form.hidden_field :score, value: (@score * 100.0 / @answers_count).round(1) %>
         <%= form.submit "Finish test", class: "btn btn-primary mt-3 float-right" %>
       <% end %>
     <% end %>
